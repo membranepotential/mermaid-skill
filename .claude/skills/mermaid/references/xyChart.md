@@ -105,6 +105,21 @@ xychart
     line [+1.3, .6, 2.4, -.34]
 ```
 
+### Named series & legend (v11.17.0+)
+
+Bar and line series can be named; a named series is automatically added to a legend, an unnamed one is omitted from it.
+
+```
+bar "series name" [2.3, 45, .98, -3.4]
+line "series name" [2.3, 45, .98, -3.4]
+```
+
+> **Note**
+> Renderers older than v11.17.0 parse the series name but silently ignore it (no legend, no error) — check the mermaid/mermaid-cli version before relying on it.
+
+> **Note**
+> Mermaid's xyChart has no built-in stacking mode. Draw a stacked bar chart by giving each series **cumulative** values — each series' data includes the ones stacked below it (e.g. a bottom series `[10, 20]` and a total-height series `[30, 50]` drawn on top of it), so the visible band per series is the difference between consecutive series, not the raw value.
+
 ## Chart Configurations
 
 | Parameter                | Description                                                   | Default value |
@@ -119,6 +134,9 @@ xychart
 | chartOrientation         | 'vertical' or 'horizontal'                                    |  'vertical'   |
 | plotReservedSpacePercent | Minimum space plots will take inside the chart                |      50       |
 | showDataLabel            | Should show the value corresponding to the bar within the bar |     false     |
+| showLegend               | Show the legend for named series (v11.17.0+)                  |     true      |
+| legendFontSize           | Legend text font size (v11.17.0+)                              |      14       |
+| legendPadding            | Padding around the legend (v11.17.0+)                          |      10       |
 
 ### AxisConfig
 
